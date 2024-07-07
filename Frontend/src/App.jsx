@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import Post from "./components/Post";
 
-const urlBaseServer = "http://localhost:5000";
+const urlBaseServer = "http://localhost:3000";
 
 function App() {
   const [titulo, setTitulo] = useState("");
-  const [imgSrc, setImgSRC] = useState("");
+  const [img, setImg] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [posts, setPosts] = useState([]);
 
@@ -17,14 +17,15 @@ function App() {
   };
 
   const agregarPost = async () => {
-    const post = { titulo, url: imgSrc, descripcion };
+    const post = {titulo, img, descripcion};
     await axios.post(urlBaseServer + "/posts", post);
     getPosts();
   };
 
   // este método se utilizará en el siguiente desafío
+
   const like = async (id) => {
-    await axios.put(urlBaseServer + `/posts/like/${id}`);
+    await axios.put(urlBaseServer + `/posts/${id}/like`);
     getPosts();
   };
 
@@ -45,7 +46,7 @@ function App() {
         <div className="col-12 col-sm-4">
           <Form
             setTitulo={setTitulo}
-            setImgSRC={setImgSRC}
+            setImg={setImg}
             setDescripcion={setDescripcion}
             agregarPost={agregarPost}
           />

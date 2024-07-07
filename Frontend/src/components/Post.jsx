@@ -1,6 +1,9 @@
 function Post({
+  // eslint-disable-next-line react/prop-types
   post: { id, titulo, img, descripcion, likes },
+  // eslint-disable-next-line react/prop-types
   like,
+  // eslint-disable-next-line react/prop-types
   eliminarPost,
 }) {
   return (
